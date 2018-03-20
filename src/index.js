@@ -1,3 +1,5 @@
+const buildMarker = require("./marker");
+
 console.log("Hello from JavaScript");
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
@@ -9,4 +11,8 @@ const map = new mapboxgl.Map({
   zoom: 12, // starting zoom
   style: "mapbox://styles/mapbox/outdoors-v10" // mapbox has lots of different map styles available.
 });
+
+buildMarker([-87.6354, 41.8885],"Hotel").addTo(map);
+
+
 
