@@ -10,5 +10,94 @@ body {
 
 #map {
   height: 100vh;
+  flex: 3;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.sidebar {
+  height: 100vh;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-content: center;
+}
+
+.sidebartop {
+  flex: 1;
+  background-color: red
+}
+
+.sidebarbottom {
+  flex: 1;
+  background-color: blue
+}
+
+#header {
+  position: absolute;
+  display: flex;
   width: 100vw;
+  z-index: 1;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.navbar {
+  display: flex;
+  width: 400px;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+
+.navbar a {
+  font-size: 1.5rem;
+
+}
+
+button {
+  font-size: 15px;
+  border: 1px solid blue;
+  border-radius: 48px;
+}
+
+
+.itineraryItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.itineraryItem button {
+}
+
+.itineraryItem h5 {
+  width: 60%;
+  padding-left: 15px;
+}
+
+@media (min-width: 600px) { 
+  #wrapper {
+    height: 100vh;
+    width: 100vw;
+    flex-direction: column;
+    align-self: end;
+  }
+
+  #map {
+    height: 60%;
+    flex: 2;
+  }
+
+
+  .sidebar {
+    height: 40%;
+    flex: 1;
+  }
 }

@@ -89,7 +89,18 @@ eval("var require;var require;(function(f){if(true){module.exports=f()}else { va
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("console.log(\"Hello from JavaScript\");\nconst mapboxgl = __webpack_require__(/*! mapbox-gl/dist/mapbox-gl.js */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\nmapboxgl.accessToken = \"pk.eyJ1IjoiZGF2aWRmdWRhY3oiLCJhIjoiY2plenRvNXF1MGljbjMzbm5hZms5enplZCJ9.-wKGDmuBwhyZGjjKMaRxgA\";\n\nconst map = new mapboxgl.Map({\n  container: \"map\",\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: \"mapbox://styles/mapbox/outdoors-v10\" // mapbox has lots of different map styles available.\n});\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const buildMarker = __webpack_require__(/*! ./marker */ \"./src/marker.js\");\n\nconsole.log(\"Hello from JavaScript\");\nconst mapboxgl = __webpack_require__(/*! mapbox-gl/dist/mapbox-gl.js */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\n\nmapboxgl.accessToken = \"pk.eyJ1IjoiZGF2aWRmdWRhY3oiLCJhIjoiY2plenRvNXF1MGljbjMzbm5hZms5enplZCJ9.-wKGDmuBwhyZGjjKMaRxgA\";\n\nconst map = new mapboxgl.Map({\n  container: \"map\",\n  center: [-87.6354, 41.8885], // FullStack NY coordinates; alternatively, use [-87.6354, 41.8885] for Chicago\n  zoom: 12, // starting zoom\n  style: \"mapbox://styles/mapbox/outdoors-v10\" // mapbox has lots of different map styles available.\n});\n\nbuildMarker([-87.6354, 41.8885],\"Hotel\").addTo(map);\n\n\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/marker.js":
+/*!***********************!*\
+  !*** ./src/marker.js ***!
+  \***********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("const mapboxgl = __webpack_require__(/*! mapbox-gl/dist/mapbox-gl.js */ \"./node_modules/mapbox-gl/dist/mapbox-gl.js\");\nmapboxgl.accessToken = \"pk.eyJ1IjoiZGF2aWRmdWRhY3oiLCJhIjoiY2plenRvNXF1MGljbjMzbm5hZms5enplZCJ9.-wKGDmuBwhyZGjjKMaRxgA\";\n\nfunction builderFunc (coordsArr, placeType) {\n  const markerDomEl = document.createElement('div');\n  markerDomEl.style.width = \"32px\";\n  markerDomEl.style.height = \"39px\";\n  switch (placeType) { \n    case 'Activity':\n    markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/WbMOfMl.png)'\n      break;\n    case 'Hotel':\n    markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/D9574Cu.png)'\n      break;\n    case 'Restaurant':\n    markerDomEl.style.backgroundImage = 'url(http://i.imgur.com/cqR6pUI.png)'\n      break;\n  } \n  return new mapboxgl.Marker(markerDomEl).setLngLat(coordsArr);\n}\n\n\n\nmodule.exports = builderFunc\n\n//# sourceURL=webpack:///./src/marker.js?");
 
 /***/ })
 
